@@ -54,7 +54,7 @@ function deleteBook(id) {
 function addBook(title, author, comments) {
     const sql = `INSERT INTO Books (Title, Author, Comments) VALUES (?,?,?)`;
     return new Promise((resolve, reject) => {
-        db.run(sql, [title, author, comments], (error, result) => {
+        db.run(sql, [title, author, comments], (error) => {
             if (!title || !author || !comments) {
                 const message = "You are missing input value"
                 reject(error, message)
@@ -64,7 +64,8 @@ function addBook(title, author, comments) {
                 reject(error)
             } else {
                 const message = "Book has been added"
-                resolve(message, result)
+                resolve(message)
+
             }
         })
     })

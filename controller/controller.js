@@ -29,14 +29,14 @@ deleteOneBook = (req, res) => {
         res.status(204).json({ message: "Book was deleted" })
     }).catch((err) => {
         console.log(err)
-        res.status(404).json({ message: "Book was not deleted" })
+        res.status(400).json({ message: "Book was not deleted" })
     })
 }
 
 addOneBook = (req, res) => {
     model.addBook(req.body.Title, req.body.Author, req.body.Comments).then((book) => {
         console.log(book)
-        res.status(201).json({ message: "Book was added" })
+        res.status(201).json({ message: "Book was added", book })
     }).catch((err) => {
         console.log(err)
         res.status(400).json({ message: "Book was not added" })

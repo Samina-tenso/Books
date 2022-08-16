@@ -42,7 +42,6 @@ db.run(bookTable, err => {
 
 
 
-// const horse = " NOT EXISTS(SELECT * FROM Books WHERE Title = 'Leviathan Wakes')"
 
 
 

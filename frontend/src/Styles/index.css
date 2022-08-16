@@ -1,0 +1,11 @@
+.displayModal {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+MuiDialog.Mui-select {
+    border: none;
+}

@@ -31,9 +31,9 @@ export default function ModalBox() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "Title": title,
-                    "Author": author,
-                    "Comments": comments,
+                    "title": title,
+                    "author": author,
+                    "comments": comments,
                 })
 
 

@@ -4,11 +4,11 @@ console.log(db)
 
 //Get all books 
 function getAll() {
-    const sql = "SELECT * FROM Books"
+    const sql = "SELECT * FROM books ORDER BY book_ID DESC";
     return new Promise((resolve, reject) => {
-        db.all(sql, (error, result) => {
+        db.query(sql, (error, result) => {
             if (error) {
-                res.status(500).json({ "error": error.message })
+                console.log({ "error": error.message })
                 reject(error)
             } else {
                 resolve(result)
@@ -19,9 +19,9 @@ function getAll() {
 
 //Get one book
 function getOne(id) {
-    const sql = `SELECT * FROM Books WHERE Book_ID = ${id}`;
+    const sql = "SELECT * FROM books WHERE book_ID = ($1);"
     return new Promise((resolve, reject) => {
-        db.get(sql, (error, result) => {
+        db.query(sql, [id], (error, result) => {
             if (error) {
                 reject(error)
             } else {
@@ -34,10 +34,10 @@ function getOne(id) {
 
 // Delete book
 function deleteBook(id) {
-    const sql = `DELETE FROM Books WHERE Book_ID = ${id}`;
+    const sql = `DELETE FROM Books WHERE book_ID = ($1)`;
     console.log(sql)
     return new Promise((resolve, reject) => {
-        db.exec(sql, (error) => {
+        db.query(sql, [id], (error) => {
             if (error) {
                 console.log(error.message)
                 reject(error)
@@ -52,9 +52,9 @@ function deleteBook(id) {
 
 // Post/add book
 function addBook(title, author, comments) {
-    const sql = `INSERT INTO Books (Title, Author, Comments) VALUES (?,?,?)`;
+    const sql = "INSERT INTO books (title, author, comments) VALUES ($2,$3,$4);"
     return new Promise((resolve, reject) => {
-        db.run(sql, [title, author, comments], (error) => {
+        db.query(sql, [title, author, comments], (error) => {
             if (!title || !author || !comments) {
                 const message = "You are missing input value"
                 reject(error, message)
@@ -73,7 +73,7 @@ function addBook(title, author, comments) {
 
 //Put book
 function putBook(id, title, author, comments) {
-    sql = `UPDATE Books SET Title = ?, Author = ?, Comments = ? WHERE BOOK_ID = ${id}`
+    sql = "UPDATE Books SET title = $2, author = $3, comments = $4 WHERE book_ID = ($1);"
     return new Promise((resolve, reject) => {
         db.run(sql, [title, author, comments], (error) => {
             if (!title || !author || !comments) {
@@ -93,13 +93,9 @@ function putBook(id, title, author, comments) {
 
 //Patch book
 function patchBook(id, title, author, comments) {
-    sql = `UPDATE Books SET
-    Title = COALESCE (?, title),
-        Author = COALESCE (?, author),
-            Comments = COALESCE (?, comments)
-            WHERE Book_ID = ${id}`;
+    sql = "UPDATE books SET title = COALESCE ($2, title),author = COALESCE ($3, author),comments = COALESCE ($4, comments) WHERE book_ID = ($1);"
     return new Promise((resolve, reject) => {
-        db.run(sql, [title, author, comments], (error, result) => {
+        db.run(sql, [id, title, author, comments], (error, result) => {
             if (error) {
                 console.log(error.message)
                 reject(error)

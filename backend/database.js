@@ -1,25 +1,24 @@
-const sqlite3 = require("sqlite3").verbose()
+const { Client } = require("pg")
 const md5 = require("md5")
 
 
-const db = new sqlite3.Database("db.sqlite", (err) => {
-    if (err) {
-        console.error(err.message)
-        throw err
-    } else {
-        console.log("Connected to database")
+const db = new Client({
+    ssl: {
+        rejectUnauthorized: false
+    },
+    connectionString: ""
+});
 
-    }
-})
+db.connect();
 
-const bookTable = `CREATE TABLE IF NOT EXISTS Books(
-        Book_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-        Title VARCHAR(100) NOT NULL,
-        Author VARCHAR(100) NOT NULL,
-        Comments TEXT);` ;
+const bookTable = `CREATE TABLE IF NOT EXISTS books(
+        book_ID SERIAL PRIMARY KRY,
+        title TEXT NOT NULL,
+        author TEXT NOT NULL,
+        aomments TEXT);` ;
 
 
-db.run(bookTable, err => {
+db.query(bookTable, err => {
 
     if (err) {
         console.error(err.message)
@@ -28,8 +27,8 @@ db.run(bookTable, err => {
     }
     else {
         console.log("Created Books table")
-        const insert = "INSERT INTO Books ( Book_ID, Title, Author, Comments) VALUES (1, 'Leviathan Wakes', 'James S.A.Corey', 'First in the series') "
-        db.run(insert, err => {
+        const sql = "INSERT INTO books ( book_ID, title, author, comments) VALUES (1, 'Leviathan Wakes', 'James S.A.Corey', 'First in the series')"
+        db.query(sql, err => {
             if (err) {
                 return console.error(err.message)
             }
@@ -38,20 +37,5 @@ db.run(bookTable, err => {
 
     }
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = db

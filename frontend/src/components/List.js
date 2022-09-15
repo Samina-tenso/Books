@@ -3,7 +3,7 @@
 import Books from "./Add"
 
 import { modalState } from "../atom"
-import { useRecoilState, useRecoilValue } from "recoil"
+import { useRecoilState } from "recoil"
 
 import ModalBox from "./Modal"
 
@@ -16,7 +16,7 @@ export default function List() {
 
 
 
-    const [isOpen, setIsOpen] = useRecoilState(modalState)
+    const [setIsOpen] = useRecoilState(modalState)
     const handleOpen = (e) => {
         e.preventDefault()
         setIsOpen(true)

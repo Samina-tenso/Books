@@ -2,7 +2,7 @@ import "../Styles/Modal.css"
 import { Dialog } from "@material-tailwind/react";
 import { modalState, titleInput, authorInput, commentsInput } from "../atom"
 import "../Styles/input.css"
-import { useRecoilState, useRecoilValue } from "recoil"
+import { useRecoilState } from "recoil"
 
 
 export default function ModalBox() {

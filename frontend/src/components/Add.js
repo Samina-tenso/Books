@@ -12,7 +12,7 @@ export default function Books() {
 
 
 
-    const [isOpen, setIsOpen] = useRecoilState(modalState)
+    const [isOpen] = useRecoilState(modalState)
     const [prevBooks, setPrevBooks] = useState([])
 
 

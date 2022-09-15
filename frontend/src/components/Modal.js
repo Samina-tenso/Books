@@ -3,8 +3,6 @@ import { Dialog } from "@material-tailwind/react";
 import { modalState, titleInput, authorInput, commentsInput } from "../atom"
 import "../Styles/input.css"
 import { useRecoilState, useRecoilValue } from "recoil"
-import { useEffect } from "react"
-import e from "cors"
 
 
 export default function ModalBox() {

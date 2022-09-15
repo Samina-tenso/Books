@@ -47,7 +47,7 @@ export default function ModalBox() {
             <Dialog open={isOpen} className="">
 
                 <div
-                    class="modal-content bg-red-grey border-none shadow-lg relative flex flex-col w-full  pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                    className="modal-content bg-red-grey border-none shadow-lg relative flex flex-col w-full  pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
                     <h1 className="text-xl my-2 place-self-center text-black"> Add book</h1>
 
 

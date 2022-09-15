@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+
+
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atom";
@@ -32,7 +34,7 @@ export default function Books() {
         }
 
 
-    }, [])
+    })
 
 
     const handleRemove = (id) => {

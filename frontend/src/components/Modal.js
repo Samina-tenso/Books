@@ -1,3 +1,4 @@
+import React from "react"
 import "../Styles/Modal.css"
 import { Dialog } from "@material-tailwind/react";
 import { modalState, titleInput, authorInput, commentsInput } from "../atom"

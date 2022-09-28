@@ -1,21 +1,28 @@
+
 const { Client } = require("pg")
+const dotenv = require("dotenv")
+dotenv.config()
 const md5 = require("md5")
-
-
 const db = new Client({
-    ssl: {
-        rejectUnauthorized: false
-    },
-    connectionString: ""
+    user: process.env.PGUSER,
+    host: process.env.PGHOST,
+    database: process.env.PGDATABASE,
+    password: process.env.PGPASSWORD,
+    port: process.env.PGPORT
+
 });
 
-db.connect();
+db.connect(function (err) {
+    if (err) throw err;
+    console.log("Connected")
+});
 
 const bookTable = `CREATE TABLE IF NOT EXISTS books(
-        book_ID SERIAL PRIMARY KRY,
-        title TEXT NOT NULL,
-        author TEXT NOT NULL,
-        aomments TEXT);` ;
+        book_ID SERIAL PRIMARY KEY,
+        title VARCHAR NOT NULL,
+        author VARCHAR NOT NULL,
+        comments VARCHAR
+        );`
 
 
 db.query(bookTable, err => {

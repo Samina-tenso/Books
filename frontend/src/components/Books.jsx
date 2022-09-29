@@ -9,15 +9,8 @@ const dbUrl = "http://localhost:4000/books"
 
 export default function Books() {
 
-
-
-
-
-
     const [isOpen] = useRecoilState(modalState)
     const [prevBooks, setPrevBooks] = useState([])
-
-
     useEffect(() => {
         if (!isOpen) {
             fetch(dbUrl)
@@ -28,12 +21,7 @@ export default function Books() {
                 }).catch(error => {
                     console.error(error)
                 })
-
-
-
         }
-
-
     })
 
 
@@ -45,14 +33,10 @@ export default function Books() {
                 method: "DELETE",
 
             })
-
-
-
     }
 
     return (
         <div className=" container">
-
             < ul className=""> {
                 prevBooks.map((book) => {
                     return (
@@ -70,7 +54,6 @@ export default function Books() {
                                 <div className="flex  w-1/2 ">
                                     <button className="   my-2 btn  h-10  shadow-xl bg-white hover:text-white px-4 hover:bg-teal" type=" button"> EDIT </button>
                                 </div>
-
                             </div>
                         </li>
                     )
@@ -78,6 +61,5 @@ export default function Books() {
             }
             </ul >
         </div >
-
     )
 }

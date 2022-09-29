@@ -1,7 +1,7 @@
 
 import React from "react"
 import Books from "./Books"
-import { modalState } from "../atom"
+import { modalState } from "../stores/recoil/atom"
 import { useRecoilState } from "recoil"
 
 import ModalBox from "./Modal"

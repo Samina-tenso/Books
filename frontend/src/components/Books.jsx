@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { modalState } from "../atom";
+import { modalState } from "../stores/recoil/atom";
 
 const dbUrl = "http://localhost:4000/books"
 

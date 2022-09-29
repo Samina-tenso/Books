@@ -1,7 +1,7 @@
 
 import React from "react"
 import { RecoilRoot } from "recoil"
-import "../src/Styles/input.css"
+import "../src/styles/input.css"
 import {
   BrowserRouter as Router,
   Route,

@@ -1,8 +1,7 @@
 import React from "react"
-import "../Styles/Modal.css"
 import { Dialog } from "@material-tailwind/react";
-import { modalState, titleInput, authorInput, commentsInput } from "../atom"
-import "../Styles/input.css"
+import { modalState, titleInput, authorInput, commentsInput } from "../stores/recoil/atom"
+import "../styles/input.css"
 import { useRecoilState } from "recoil"
 
 

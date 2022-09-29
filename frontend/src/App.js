@@ -16,12 +16,9 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<List />}></Route>
-
           </Routes>
         </Router>
       </RecoilRoot>
-
-
     </div >
   );
 }

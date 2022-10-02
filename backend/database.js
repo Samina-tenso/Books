@@ -18,7 +18,7 @@ db.connect(function (err) {
 });
 
 const bookTable = `CREATE TABLE IF NOT EXISTS books(
-        book_ID SERIAL PRIMARY KEY,
+        book_ID  SERIAL PRIMARY KEY,
         title VARCHAR NOT NULL,
         author VARCHAR NOT NULL,
         comments VARCHAR
@@ -34,7 +34,7 @@ db.query(bookTable, err => {
     }
     else {
         console.log("Created Books table")
-        const sql = "INSERT INTO books ( book_ID, title, author, comments) VALUES (1, 'Leviathan Wakes', 'James S.A.Corey', 'First in the series')"
+        const sql = "INSERT INTO books (title, author, comments) VALUES ('Leviathan Wakes', 'James S.A.Corey', 'First in the series')"
         db.query(sql, err => {
             if (err) {
                 return console.error(err.message)

@@ -4,6 +4,7 @@ console.log(db)
 
 //Get all books 
 function getAll() {
+    console.log("done")
     const sql = "SELECT * FROM books ORDER BY book_ID DESC";
     return new Promise((resolve, reject) => {
         db.query(sql, (error, result) => {
@@ -11,7 +12,9 @@ function getAll() {
                 console.log({ "error": error.message })
                 reject(error)
             } else {
-                resolve(result)
+                console.log("hello")
+                console.log(result.rows)
+                resolve(result.rows)
             }
         })
     })
@@ -19,6 +22,7 @@ function getAll() {
 
 //Get one book
 function getOne(id) {
+    console.log(id)
     const sql = "SELECT * FROM books WHERE book_ID = ($1);"
     return new Promise((resolve, reject) => {
         db.query(sql, [id], (error, result) => {
@@ -34,7 +38,7 @@ function getOne(id) {
 
 // Delete book
 function deleteBook(id) {
-    const sql = `DELETE FROM Books WHERE book_ID = ($1)`;
+    const sql = `DELETE FROM Books WHERE book_id = ($1)`;
     console.log(sql)
     return new Promise((resolve, reject) => {
         db.query(sql, [id], (error) => {
@@ -52,11 +56,11 @@ function deleteBook(id) {
 
 // Post/add book
 function addBook(title, author, comments) {
-    const sql = "INSERT INTO books (title, author, comments) VALUES ($2,$3,$4);"
+    const sql = `INSERT INTO books (title, author, comments) VALUES ($1, $2, $3);`
     return new Promise((resolve, reject) => {
         db.query(sql, [title, author, comments], (error) => {
             if (!title || !author || !comments) {
-                const message = "You are missing input value"
+                const message = "Book was not added"
                 reject(error, message)
             }
             if (error) {

@@ -10,7 +10,7 @@ getAllBooks = (req, res) => {
 }
 
 getOneBook = (req, res) => {
-    const id = [req.params.id]
+    const id = req.params.id
     model.getOne(id).then(book => {
         if (book) {
             res.status(200).send(book)
@@ -22,7 +22,7 @@ getOneBook = (req, res) => {
 
 
 deleteOneBook = (req, res) => {
-    const id = [req.params.id]
+    const id = req.params.id
     console.log(id)
     model.deleteBook(id).then((book) => {
         console.log(book)
@@ -34,8 +34,8 @@ deleteOneBook = (req, res) => {
 }
 
 addOneBook = (req, res) => {
-    model.addBook(req.body.Title, req.body.Author, req.body.Comments).then((book) => {
-        console.log(book)
+    model.addBook(req.body.title, req.body.author, req.body.comments).then((book) => {
+        console.log("book")
         res.status(201).json({ message: "Book was added", book })
     }).catch((err) => {
         console.log(err)
@@ -45,7 +45,7 @@ addOneBook = (req, res) => {
 
 putOneBook = (req, res) => {
     const id = req.params.id;
-    model.putBook(id, req.body.Title, req.body.Author, req.body.Comments).then((book) => {
+    model.putBook(id, req.body.title, req.body.author, req.body.Comments).then((book) => {
         console.log(book)
         res.status(200).json({ message: "Updated book info" })
     }).catch((err) => {

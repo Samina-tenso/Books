@@ -17,14 +17,13 @@ app.use((req, res, next) => {
 
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
-
+app.use(booksRouter)
 app.use(function (req, res) {
-    res.status(404)
+    res.status(404).send()
 })
-app.use("/", booksRouter)
+
 
 const port = 4000
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
 })
-

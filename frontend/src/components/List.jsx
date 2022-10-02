@@ -3,14 +3,13 @@ import React from "react"
 import Books from "./Books"
 import { modalState } from "../stores/recoil/atom"
 import { useRecoilState } from "recoil"
-
 import ModalBox from "./Modal"
-
-
 
 export default function List() {
 
-    const [setIsOpen] = useRecoilState(modalState)
+    const [isOpen, setIsOpen] = useRecoilState(modalState)
+
+
     const handleOpen = (e) => {
         e.preventDefault()
         setIsOpen(true)
@@ -23,7 +22,8 @@ export default function List() {
                 </div> <div className="flex justify-center ">
                     <button className="my-2 active:outline-none h-10  shadow-xl bg-white  px-4 hover:bg-teal hover:text-white" onClick={handleOpen}> Add + </button>
                 </div>
-                <ModalBox />  <Books />
+                {isOpen ? (<ModalBox />) : (<Books />)}
+
 
             </div>
         </>

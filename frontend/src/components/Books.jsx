@@ -5,8 +5,7 @@ import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../stores/recoil/atom";
 
-const dbUrl = process.env.NODE_ENV === 'production' ?
-    process.env.REACT_APP_BACKEND_URL : "http://localhost:4000/books"
+const dbUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000/books"
 
 
 export default function Books() {
@@ -36,7 +35,7 @@ export default function Books() {
 
     const handleRemove = (id) => {
         console.log(typeof id)
-        let newUrl = `http://localhost:4000/books/${id}`
+        let newUrl = `${dbUrl}/${id}`
         fetch(newUrl,
             {
                 method: "DELETE",

@@ -5,8 +5,8 @@ import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../stores/recoil/atom";
 
-const dbUrl = NODE_ENV === 'development' ?
-    "http://localhost:4000/books" : process.env.REACT_APP_BACKEND_URL
+
+const dbUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000/books"
 
 
 export default function Books() {

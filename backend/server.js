@@ -23,7 +23,7 @@ app.use(function (req, res) {
 })
 
 
-const port = 4000
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`)
+const PORT = process.env.PORT || 4000
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
 })

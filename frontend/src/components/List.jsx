@@ -22,7 +22,7 @@ export default function List() {
                     <button className="my-2 active:outline-none h-10  shadow-xl bg-white  px-4 hover:bg-teal hover:text-white" onClick={handleOpen}> Add + </button>
                 </div>
                 {isOpen ? (<DialogBox />) : (<Books />)}
-                {editOpen ? (<EditDialog />) : (<Books />)}
+                {editOpen ? (<EditDialog />) : null}
             </div>
         </>
 

@@ -14,7 +14,6 @@ export default function EditDialog() {
   const books = useRecoilValue(allBooks)
   const [changedBook, setChangedBook] = useRecoilState(currentBook)
   const bookId = useRecoilValue(bookState)
-  const dbUrl = "http://localhost:4000/books"
   const ref = useRef(null)
 
   const handleClose = (e) => {
@@ -22,7 +21,7 @@ export default function EditDialog() {
     setEditOpen(false)
   }
   function editBook() {
-    fetch(dbUrl,
+    fetch(process.env.REACT_APP_BACKEND_URL,
       {
         method: "PATCH",
         headers: {

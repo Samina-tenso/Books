@@ -25,7 +25,6 @@ export default function Books() {
                 }).catch(error => {
                     console.error(error)
                 })
-
         }
     }, [])
 
@@ -52,7 +51,7 @@ export default function Books() {
             < ul className=""> {
                 prevBooks.map((book) => {
                     return (
-                        <li className="   flex sm:flex-nowrap flex-wrap space-x-2 space-y-4 " key={book.book_id}>
+                        <li className="flex sm:flex-nowrap flex-wrap space-x-2 space-y-4 " key={book.book_id}>
                             <div className="flex w-1/6" >
                                 <input className="checked:bg-black rounded-full font-light self-center appearance-none h-8 w-8 border-2 border-black" type="checkbox" />
                             </div>

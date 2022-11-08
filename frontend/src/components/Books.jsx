@@ -4,11 +4,9 @@ import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { allBooks, bookState, dialogState, editDialogState } from "../stores/recoil/atom";
 
-const dbUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000/books"
 
 
 export default function Books() {
-
     const [isOpen] = useRecoilState(dialogState)
     const [editOpen, setEditOpen] = useRecoilState(editDialogState)
     const [bookId, setBookId] = useRecoilState(bookState)
@@ -17,8 +15,7 @@ export default function Books() {
         console.log(prevBooks)
         if (!isOpen) {
             console.log(prevBooks)
-
-            fetch(dbUrl)
+            fetch(process.env.REACT_APP_BE_URL)
                 .then(res => res.json())
                 .then(book => {
                     console.log(book)
@@ -36,11 +33,10 @@ export default function Books() {
 
     const handleRemove = (id) => {
         console.log(typeof id)
-        let newUrl = `${dbUrl}/${id}`
+        let newUrl = `${process.env.REACT_APP_BE_URL}/${id}`
         fetch(newUrl,
             {
                 method: "DELETE",
-
             })
     }
 
@@ -50,11 +46,10 @@ export default function Books() {
             setBookId(id)
             console.log(bookId)
         }
-
     }
 
     return (
-        <div className=" container">
+        <div className="container">
             < ul className=""> {
                 prevBooks.map((book) => {
                     return (

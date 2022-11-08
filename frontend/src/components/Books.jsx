@@ -5,7 +5,6 @@ import { useRecoilState } from "recoil";
 import { allBooks, bookState, dialogState, editDialogState } from "../stores/recoil/atom";
 
 
-
 export default function Books() {
     const [isOpen] = useRecoilState(dialogState)
     const [editOpen, setEditOpen] = useRecoilState(editDialogState)
@@ -15,7 +14,7 @@ export default function Books() {
         console.log(prevBooks)
         if (!isOpen) {
             console.log(prevBooks)
-            fetch(process.env.REACT_APP_BE_URL)
+            fetch(process.env.REACT_APP_BACKEND_URL)
                 .then(res => res.json())
                 .then(book => {
                     console.log(book)
@@ -33,7 +32,7 @@ export default function Books() {
 
     const handleRemove = (id) => {
         console.log(typeof id)
-        let newUrl = `${process.env.REACT_APP_BE_URL}/${id}`
+        let newUrl = `${process.env.REACT_APP_BACKEND_URL}/${id}`
         fetch(newUrl,
             {
                 method: "DELETE",

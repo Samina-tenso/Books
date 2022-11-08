@@ -10,14 +10,14 @@ export default function DialogBox() {
     const [author, setAuthorInput] = useRecoilState(authorInput)
     const [comments, setCommentsInput] = useRecoilState(commentsInput)
     const [isOpen, setIsOpen] = useRecoilState(dialogState)
-    const dbUrl = "http://localhost:4000/books"
+
 
     const handleClose = (e) => {
         e.preventDefault()
         setIsOpen(false)
     }
     function submitBook() {
-        fetch(dbUrl,
+        fetch(process.env.REACT_APP_BACKEND_URL,
             {
                 method: "POST",
                 headers: {

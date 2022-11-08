@@ -29,7 +29,6 @@ export default function DialogBox() {
                     "comments": comments,
                 })
             })
-
     }
     return (
         <>

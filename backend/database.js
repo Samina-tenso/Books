@@ -5,8 +5,6 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
-
-const md5 = require("md5")
 const db = new Client({
     user: process.env.PGUSER,
     host: process.env.PGHOST,

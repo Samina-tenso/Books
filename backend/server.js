@@ -12,7 +12,6 @@ app.use((req, res, next) => {
         }
         next()
     })
-
 })
 
 app.use(express.urlencoded({ extended: true }))
@@ -21,7 +20,6 @@ app.use(booksRouter)
 app.use(function (req, res) {
     res.status(404).send()
 })
-
 
 const PORT = process.env.PORT || 4000
 app.listen(PORT, () => {
